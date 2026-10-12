@@ -17,7 +17,7 @@ installed.
 |---|---|
 | ![Approval card](docs/images/approval.png) | ![Question card](docs/images/question.png) |
 
-| Usage, one square per day | Settings |
+| Usage, one square per day | Connecting agents |
 |---|---|
 | ![Usage grid](docs/images/usage.png) | ![Settings](docs/images/settings.png) |
 
