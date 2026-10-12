@@ -1,0 +1,18 @@
+{
+  "session_id": "7e635ddc-dc35-4033-b0d8-d7e9f616f8c3",
+  "transcript_path": "/Users/dev/.claude/projects/-Users-dev-projects-demo/7e635ddc-dc35-4033-b0d8-d7e9f616f8c3.jsonl",
+  "cwd": "/Users/dev/projects/demo",
+  "prompt_id": "eb303291-5574-4f5e-abdf-31f649009f00",
+  "permission_mode": "default",
+  "agent_id": "ae6293533f6470815",
+  "agent_type": "Explore",
+  "effort": {
+    "level": "medium"
+  },
+  "hook_event_name": "SubagentStop",
+  "stop_hook_active": false,
+  "agent_transcript_path": "/Users/dev/.claude/projects/-Users-dev-projects-demo/7e635ddc-dc35-4033-b0d8-d7e9f616f8c3/subagents/agent-ae6293533f6470815.jsonl",
+  "last_assistant_message": "The directory contains one file: `hello.txt`.",
+  "background_tasks": [],
+  "session_crons": []
+}

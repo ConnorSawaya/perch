@@ -1,0 +1,10 @@
+{
+  "session_id": "6c991c21-c132-43d4-80d8-bdd47d4e39d1",
+  "transcript_path": "/Users/dev/.claude/projects/-Users-dev-projects-demo/6c991c21-c132-43d4-80d8-bdd47d4e39d1.jsonl",
+  "cwd": "/Users/dev/projects/demo",
+  "scratchpad_dir": "/private/tmp/claude-501/-Users-dev-projects-demo/6c991c21-c132-43d4-80d8-bdd47d4e39d1/scratchpad",
+  "prompt_id": "7d2d0d9f-8d44-4d93-9b67-b0530c395822",
+  "hook_event_name": "SessionStart",
+  "source": "compact",
+  "model": "claude-haiku-5-5"
+}

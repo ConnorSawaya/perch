@@ -1,0 +1,54 @@
+{
+  "about": "Reference shapes collected while reading open-source notch apps and the official Claude Code hooks reference. None of these were captured from a live agent; treat them as encoder test targets. Payloads and decisions captured live on this machine (Claude Code 2.1.296) are in Fixtures/claude/ and take precedence wherever the two differ.",
+  "collected": "2026-10-11",
+  "files": {
+    "claude-permissionrequest-input-doc.json": {
+      "kind": "hook stdin example",
+      "origin": "DOC https://code.claude.com/docs/en/hooks (PermissionRequest input). Paths shortened. Note: no tool_use_id."
+    },
+    "claude-permissionrequest-allow.json": {
+      "kind": "hook stdout",
+      "origin": "SRC farouqaldori/vibe-notch ClaudeIsland/Resources/claude-island-state.py and wxtsky/CodeIsland Sources/CodeIsland/AppState.swift (approvePermission). Matches DOC."
+    },
+    "claude-permissionrequest-deny.json": {
+      "kind": "hook stdout",
+      "origin": "SRC wxtsky/CodeIsland Sources/CodeIsland/AppState.swift (denyPermission). No message field."
+    },
+    "claude-permissionrequest-deny-with-message.json": {
+      "kind": "hook stdout",
+      "origin": "SRC farouqaldori/vibe-notch ClaudeIsland/Resources/claude-island-state.py. DOC: message tells Claude why; optional interrupt:true stops Claude."
+    },
+    "claude-permissionrequest-always-session-codeisland.json": {
+      "kind": "hook stdout",
+      "origin": "SRC wxtsky/CodeIsland Sources/CodeIsland/AppState.swift (approvePermission always:true). Builds its own rule; ignores permission_suggestions. ruleContent \"*\" is CodeIsland's choice; DOC says omit ruleContent to match the whole tool."
+    },
+    "claude-permissionrequest-always-mcp-codeisland.json": {
+      "kind": "hook stdout",
+      "origin": "SRC wxtsky/CodeIsland AppState.swift, fix for issue #224: MCP tools must not carry ruleContent."
+    },
+    "claude-permissionrequest-always-from-suggestion-doc.json": {
+      "kind": "hook stdout",
+      "origin": "Constructed from DOC: echo one entry of the input's permission_suggestions back as decision.updatedPermissions. Neither open-source app does this."
+    },
+    "claude-askuserquestion-via-permissionrequest-codeisland.json": {
+      "kind": "hook stdout",
+      "origin": "SRC wxtsky/CodeIsland AppState.swift (askUserQuestionUpdatedInput). Includes CodeIsland's extra scalar \"answer\" key, which is not in the documented AskUserQuestion schema."
+    },
+    "claude-askuserquestion-via-permissionrequest-recommended.json": {
+      "kind": "hook stdout",
+      "origin": "Same as above without the undocumented \"answer\" key. Answers are keyed by the question text; multi-select joins labels with commas (DOC)."
+    },
+    "claude-askuserquestion-via-pretooluse-doc.json": {
+      "kind": "hook stdout",
+      "origin": "DOC https://code.claude.com/docs/en/hooks (PreToolUse, tools that require user interaction)."
+    },
+    "terminal-app-jump.applescript": {
+      "kind": "AppleScript",
+      "origin": "Written for Perch. Technique from wxtsky/CodeIsland Sources/CodeIsland/TerminalActivator.swift (activateTerminalApp); terms validated against the local Terminal.sdef and compiled with osacompile. Not executed."
+    },
+    "terminal-app-frontmost-tty.applescript": {
+      "kind": "AppleScript",
+      "origin": "Written for Perch. Technique from wxtsky/CodeIsland Sources/CodeIsland/TerminalVisibilityDetector.swift (isTerminalAppTabActive). Compiled, not executed."
+    }
+  }
+}

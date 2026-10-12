@@ -1,0 +1,7 @@
+.build/
+build/
+.DS_Store
+# Internal working notes, not part of the app
+docs/briefs/
+docs/research/
+docs/integration-log.md

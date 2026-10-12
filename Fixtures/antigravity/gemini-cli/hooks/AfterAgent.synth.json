@@ -1,0 +1,10 @@
+{
+  "session_id": "5f0c1d1e-6a0b-4b53-8f58-0d5a8c2c9f01",
+  "transcript_path": "/Users/alex/.gemini/tmp/shop-api/chats/session-2026-10-11T21-40-5f0c1d1e.jsonl",
+  "cwd": "/Users/alex/code/shop-api",
+  "hook_event_name": "AfterAgent",
+  "timestamp": "2026-10-12T04:41:30.441Z",
+  "prompt": "Add a /health endpoint and a test",
+  "prompt_response": "Added the /health endpoint and a passing test.",
+  "stop_hook_active": false
+}

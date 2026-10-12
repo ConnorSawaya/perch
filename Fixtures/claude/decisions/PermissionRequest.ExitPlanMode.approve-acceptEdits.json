@@ -1,0 +1,19 @@
+{
+  "hookSpecificOutput": {
+    "hookEventName": "PermissionRequest",
+    "decision": {
+      "behavior": "allow",
+      "updatedInput": {
+        "plan": "Plan: Use the Write tool to create plan-D5.txt in the current directory with the content \"hi\".\nThen reply APPROVED.\n",
+        "planFilePath": "/Users/dev/projects/demo/.perch-plans/plan-in-at-most-resilient-journal.md"
+      },
+      "updatedPermissions": [
+        {
+          "type": "setMode",
+          "mode": "acceptEdits",
+          "destination": "session"
+        }
+      ]
+    }
+  }
+}

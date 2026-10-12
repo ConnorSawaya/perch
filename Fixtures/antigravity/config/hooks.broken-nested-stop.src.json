@@ -1,0 +1,15 @@
+{
+  "example": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/abs/path/hook.sh",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

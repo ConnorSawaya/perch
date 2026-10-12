@@ -1,0 +1,7 @@
+{
+  "decision": "ask",
+  "reason": "Requires confirmation for test execution.",
+  "permissionOverrides": [
+    "command(npm test)"
+  ]
+}

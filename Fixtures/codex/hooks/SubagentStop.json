@@ -1,0 +1,14 @@
+{
+  "session_id": "019a9d1e-6c2a-7b30-9f4e-2d1c8a5b7e10",
+  "transcript_path": "/Users/alex/.codex/sessions/2026/10/10/rollout-2026-10-10T09-15-02-019a9d1e-6c2a-7b30-9f4e-2d1c8a5b7e10.jsonl",
+  "cwd": "/Users/alex/code/acme-api",
+  "model": "gpt-5.2-codex",
+  "hook_event_name": "SubagentStop",
+  "permission_mode": "default",
+  "turn_id": "019a9d1f-0c02-7d10-b1aa-3c5e7f9a1b2c",
+  "agent_id": "019a9d1f-0b44-7e51-a2c7-9d3e6f1b8c20",
+  "agent_type": "explorer",
+  "agent_transcript_path": "/Users/alex/.codex/sessions/2026/10/10/rollout-2026-10-10T09-17-40-019a9d1f-0b44-7e51-a2c7-9d3e6f1b8c20.jsonl",
+  "stop_hook_active": false,
+  "last_assistant_message": "The status endpoint is reachable and reports healthy."
+}

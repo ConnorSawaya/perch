@@ -1,0 +1,6 @@
+{
+  "title": {
+    "type": "command",
+    "command": "~/.gemini/antigravity-cli/title.sh"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "session_id": "3eb79034-9f7d-4b86-8bd5-e43d0683700e",
+  "transcript_path": "/Users/dev/.claude/projects/-Users-dev-projects-demo/3eb79034-9f7d-4b86-8bd5-e43d0683700e.jsonl",
+  "cwd": "/Users/dev/projects/demo",
+  "prompt_id": "b97c0e3e-fa7c-4657-98a8-a523ff580db4",
+  "permission_mode": "default",
+  "effort": {
+    "level": "medium"
+  },
+  "hook_event_name": "PreToolUse",
+  "tool_name": "AskUserQuestion",
+  "tool_input": {
+    "questions": [
+      {
+        "question": "Which color?",
+        "header": "Color",
+        "options": [
+          {
+            "label": "Red",
+            "description": "Choose red"
+          },
+          {
+            "label": "Blue",
+            "description": "Choose blue"
+          }
+        ],
+        "multiSelect": false
+      }
+    ]
+  },
+  "tool_use_id": "toolu_011uECbAStbxDNZdG2C2zv4S"
+}

@@ -1,0 +1,17 @@
+{
+  "session_id": "8596e483-4e72-41a3-9d37-2795122cb958",
+  "transcript_path": "/Users/dev/.claude/projects/-Users-dev-projects-demo/8596e483-4e72-41a3-9d37-2795122cb958.jsonl",
+  "cwd": "/Users/dev/projects/demo",
+  "prompt_id": "2e3162b8-eff2-4316-9d29-396885efcd77",
+  "permission_mode": "default",
+  "effort": {
+    "level": "medium"
+  },
+  "hook_event_name": "PreToolUse",
+  "tool_name": "Bash",
+  "tool_input": {
+    "command": "echo hello-perch",
+    "description": "Print hello-perch"
+  },
+  "tool_use_id": "toolu_01UYeaZ6eGoTjtM6UAYdjyGK"
+}

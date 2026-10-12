@@ -1,0 +1,19 @@
+{
+  "session_id": "7e635ddc-dc35-4033-b0d8-d7e9f616f8c3",
+  "transcript_path": "/Users/dev/.claude/projects/-Users-dev-projects-demo/7e635ddc-dc35-4033-b0d8-d7e9f616f8c3.jsonl",
+  "cwd": "/Users/dev/projects/demo",
+  "prompt_id": "eb303291-5574-4f5e-abdf-31f649009f00",
+  "permission_mode": "default",
+  "effort": {
+    "level": "medium"
+  },
+  "hook_event_name": "PreToolUse",
+  "tool_name": "Agent",
+  "tool_input": {
+    "description": "List current directory files",
+    "prompt": "Run ls in the current directory and report the file names",
+    "subagent_type": "Explore",
+    "run_in_background": false
+  },
+  "tool_use_id": "toolu_017xewWBf283o6ocebjHSEvZ"
+}

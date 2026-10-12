@@ -1,0 +1,18 @@
+{
+  "toolCall": {
+    "name": "view_file",
+    "args": {
+      "AbsolutePath": "/Users/alex/code/shop-api/src/server.ts",
+      "StartLine": 1,
+      "EndLine": 120
+    }
+  },
+  "stepIdx": 2,
+  "conversationId": "7b0e7f0a-52c1-4c59-9d7e-1f6a3a1c2b10",
+  "workspacePaths": [
+    "/Users/alex/code/shop-api"
+  ],
+  "transcriptPath": "/Users/alex/.gemini/antigravity-cli/brain/7b0e7f0a-52c1-4c59-9d7e-1f6a3a1c2b10/.system_generated/logs/transcript.jsonl",
+  "artifactDirectoryPath": "/Users/alex/.gemini/antigravity-cli/brain/7b0e7f0a-52c1-4c59-9d7e-1f6a3a1c2b10",
+  "modelName": "gemini-3.8-flash-high"
+}

@@ -1,0 +1,7 @@
+{
+  "colorScheme": "tokyo night",
+  "altScreenMode": "always",
+  "toolPermission": "request-review",
+  "notifications": true,
+  "enableTerminalSandbox": true
+}

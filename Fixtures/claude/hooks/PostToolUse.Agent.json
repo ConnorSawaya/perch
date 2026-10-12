@@ -1,0 +1,83 @@
+{
+  "session_id": "7e635ddc-dc35-4033-b0d8-d7e9f616f8c3",
+  "transcript_path": "/Users/dev/.claude/projects/-Users-dev-projects-demo/7e635ddc-dc35-4033-b0d8-d7e9f616f8c3.jsonl",
+  "cwd": "/Users/dev/projects/demo",
+  "prompt_id": "eb303291-5574-4f5e-abdf-31f649009f00",
+  "permission_mode": "default",
+  "effort": {
+    "level": "medium"
+  },
+  "hook_event_name": "PostToolUse",
+  "tool_name": "Agent",
+  "tool_input": {
+    "description": "List current directory files",
+    "prompt": "Run ls in the current directory and report the file names",
+    "subagent_type": "Explore",
+    "run_in_background": false
+  },
+  "tool_response": {
+    "status": "completed",
+    "prompt": "Run ls in the current directory and report the file names",
+    "agentId": "ae6293533f6470815",
+    "agentType": "Explore",
+    "harnessNoteCount": 0,
+    "harnessTailCount": 0,
+    "harnessSectionHash": "ca37fa250c396736",
+    "content": [
+      {
+        "type": "text",
+        "text": "The directory contains one file: `hello.txt`."
+      }
+    ],
+    "resolvedModel": "claude-haiku-5-5",
+    "totalDurationMs": 2531,
+    "totalTokens": 11339,
+    "totalToolUseCount": 1,
+    "usage": {
+      "output_tokens_details": {
+        "thinking_tokens": 0
+      },
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 1269,
+      "cache_read_input_tokens": 10050,
+      "output_tokens": 18,
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 1269
+      },
+      "inference_geo": "global",
+      "iterations": [
+        {
+          "input_tokens": 2,
+          "output_tokens": 18,
+          "cache_read_input_tokens": 10050,
+          "cache_creation_input_tokens": 1269,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 1269,
+            "ephemeral_1h_input_tokens": 0
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "toolStats": {
+      "readCount": 0,
+      "searchCount": 0,
+      "bashCount": 1,
+      "editFileCount": 0,
+      "linesAdded": 0,
+      "linesRemoved": 0,
+      "otherToolCount": 0
+    },
+    "canContinueAgent": true
+  },
+  "tool_use_id": "toolu_017xewWBf283o6ocebjHSEvZ",
+  "duration_ms": 2531
+}

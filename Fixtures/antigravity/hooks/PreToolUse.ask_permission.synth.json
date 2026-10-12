@@ -1,0 +1,18 @@
+{
+  "toolCall": {
+    "name": "ask_permission",
+    "args": {
+      "Action": "command",
+      "Target": "git push",
+      "Reason": "Publish the release branch"
+    }
+  },
+  "stepIdx": 9,
+  "conversationId": "7b0e7f0a-52c1-4c59-9d7e-1f6a3a1c2b10",
+  "workspacePaths": [
+    "/Users/alex/code/shop-api"
+  ],
+  "transcriptPath": "/Users/alex/.gemini/antigravity-cli/brain/7b0e7f0a-52c1-4c59-9d7e-1f6a3a1c2b10/.system_generated/logs/transcript.jsonl",
+  "artifactDirectoryPath": "/Users/alex/.gemini/antigravity-cli/brain/7b0e7f0a-52c1-4c59-9d7e-1f6a3a1c2b10",
+  "modelName": "gemini-3.8-flash-high"
+}

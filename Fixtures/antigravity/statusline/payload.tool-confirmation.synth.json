@@ -1,0 +1,61 @@
+{
+  "cwd": "/Users/alex/code/shop-api",
+  "session_id": "7b0e7f0a-52c1-4c59-9d7e-1f6a3a1c2b10",
+  "conversation_id": "7b0e7f0a-52c1-4c59-9d7e-1f6a3a1c2b10",
+  "transcript_path": "/Users/alex/.gemini/antigravity-cli/brain/7b0e7f0a-52c1-4c59-9d7e-1f6a3a1c2b10/.system_generated/logs/transcript.jsonl",
+  "model": {
+    "id": "Gemini 3.8 Flash (High)",
+    "display_name": "Gemini 3.8 Flash (High)"
+  },
+  "workspace": {
+    "current_dir": "/Users/alex/code/shop-api",
+    "project_dir": "/Users/alex/code/shop-api"
+  },
+  "version": "1.3.3",
+  "context_window": {
+    "total_input_tokens": 88244,
+    "total_output_tokens": 61074,
+    "context_window_size": 1048576,
+    "used_percentage": 14.24,
+    "remaining_percentage": 85.76,
+    "current_usage": {
+      "input_tokens": 63382,
+      "output_tokens": 346,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 20857
+    }
+  },
+  "exceeds_200k_tokens": false,
+  "product": "antigravity",
+  "quota": {
+    "gemini-weekly": {
+      "remaining_fraction": 0.71,
+      "reset_time": "2026-10-15T07:50:32Z",
+      "reset_in_seconds": 304000
+    },
+    "gemini-5h": {
+      "remaining_fraction": 0.42,
+      "reset_time": "2026-10-12T02:10:00Z",
+      "reset_in_seconds": 9000
+    }
+  },
+  "agent_state": "tool_use",
+  "vcs": {
+    "type": "git",
+    "branch": "main",
+    "dirty": false
+  },
+  "sandbox": {
+    "enabled": false
+  },
+  "artifact_count": 2,
+  "plan_tier": "Pro",
+  "email": "someone@example.com",
+  "task_count": 0,
+  "terminal_width": 111,
+  "execution_mode": "fast",
+  "tool_confirmation_pending": true,
+  "pending_input_count": 0,
+  "conversation_title": "Add a /health endpoint",
+  "cost": 0.4821375
+}

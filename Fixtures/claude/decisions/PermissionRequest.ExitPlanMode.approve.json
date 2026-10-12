@@ -1,0 +1,12 @@
+{
+  "hookSpecificOutput": {
+    "hookEventName": "PermissionRequest",
+    "decision": {
+      "behavior": "allow",
+      "updatedInput": {
+        "plan": "Plan: use the Write tool to create plan-D4.txt in the current directory with the content \"hi\".\nThen reply APPROVED.\n",
+        "planFilePath": "/Users/dev/projects/demo/.perch-plans/plan-in-at-most-refactored-codd.md"
+      }
+    }
+  }
+}

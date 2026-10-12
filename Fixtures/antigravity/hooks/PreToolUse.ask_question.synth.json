@@ -1,0 +1,35 @@
+{
+  "toolCall": {
+    "name": "ask_question",
+    "args": {
+      "questions": [
+        {
+          "question": "Which package manager should I use?",
+          "options": [
+            "npm",
+            "pnpm",
+            "yarn"
+          ],
+          "is_multi_select": false
+        },
+        {
+          "question": "Which checks should run before commit?",
+          "options": [
+            "lint",
+            "typecheck",
+            "unit tests"
+          ],
+          "is_multi_select": true
+        }
+      ]
+    }
+  },
+  "stepIdx": 4,
+  "conversationId": "0d5c1f2e-8a43-4f6b-b1b7-93b1c0a4e611",
+  "workspacePaths": [
+    "/Users/alex/code/website"
+  ],
+  "transcriptPath": "/Users/alex/.gemini/antigravity/brain/0d5c1f2e-8a43-4f6b-b1b7-93b1c0a4e611/.system_generated/logs/transcript.jsonl",
+  "artifactDirectoryPath": "/Users/alex/.gemini/antigravity/brain/0d5c1f2e-8a43-4f6b-b1b7-93b1c0a4e611",
+  "modelName": "gemini-3.8-flash-high"
+}

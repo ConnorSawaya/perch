@@ -1,0 +1,9 @@
+{
+  "hookSpecificOutput": {
+    "hookEventName": "PermissionRequest",
+    "decision": {
+      "behavior": "deny",
+      "message": "PERCH-DENY-7391: the user declined this from the notch. Do not retry; just say the word declined."
+    }
+  }
+}

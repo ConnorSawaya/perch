@@ -1,0 +1,21 @@
+{
+  "pid": 41001,
+  "sessionId": "11111111-1111-4111-8111-111111111111",
+  "cwd": "/Users/test/dev/alpha",
+  "startedAt": 1791614988512,
+  "procStart": "Sat Oct 10 06:49:48 2026",
+  "version": "2.1.296",
+  "peerProtocol": 1,
+  "peerFeatures": [
+    "notify_idle"
+  ],
+  "kind": "interactive",
+  "entrypoint": "cli",
+  "pidDomain": "darwin",
+  "name": "Alpha refactor v2",
+  "nameSource": "user",
+  "nameSince": 1791655830000,
+  "status": "idle",
+  "updatedAt": 1791655804250,
+  "statusUpdatedAt": 1791655804250
+}

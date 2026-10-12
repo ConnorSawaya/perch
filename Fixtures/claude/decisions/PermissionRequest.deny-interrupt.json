@@ -1,0 +1,10 @@
+{
+  "hookSpecificOutput": {
+    "hookEventName": "PermissionRequest",
+    "decision": {
+      "behavior": "deny",
+      "message": "The user denied this action in Perch and asked Claude to stop.",
+      "interrupt": true
+    }
+  }
+}

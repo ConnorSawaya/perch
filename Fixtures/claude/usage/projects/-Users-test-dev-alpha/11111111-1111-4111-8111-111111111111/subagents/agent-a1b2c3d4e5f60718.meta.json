@@ -1,0 +1,8 @@
+{
+  "agentType": "Explore",
+  "description": "Find parser entry points",
+  "toolUseId": "toolu_01FIXTUREagent",
+  "spawnDepth": 1,
+  "requestShape": "background",
+  "requestNonInteractive": true
+}

@@ -1,0 +1,21 @@
+{
+  "session_id": "c27654bd-305e-40cd-bee0-35e37f56dab7",
+  "transcript_path": "/Users/dev/.claude/projects/-Users-dev-projects-demo/c27654bd-305e-40cd-bee0-35e37f56dab7.jsonl",
+  "cwd": "/Users/dev/projects/demo",
+  "scratchpad_dir": "/private/tmp/claude-501/-Users-dev-projects-demo/c27654bd-305e-40cd-bee0-35e37f56dab7/scratchpad",
+  "prompt_id": "d4844cd6-cc89-487d-aa9b-10f86adb781b",
+  "permission_mode": "default",
+  "effort": {
+    "level": "medium"
+  },
+  "hook_event_name": "PostToolUse",
+  "tool_name": "ExitPlanMode",
+  "tool_input": {},
+  "tool_response": {
+    "plan": "1. Create charlie-plan.txt in the project's working directory using the Write tool.\n2. Put a short placeholder line of text in it, then confirm the file exists.\n",
+    "isAgent": false,
+    "filePath": "/Users/dev/projects/demo/.perch-plans/write-a-2-line-plan-purring-pretzel.md"
+  },
+  "tool_use_id": "toolu_014KMJJQc3qYNJYq4c3PHuhq",
+  "duration_ms": 2
+}

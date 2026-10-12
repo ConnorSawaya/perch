@@ -1,0 +1,51 @@
+{
+  "my-linter-hook": {
+    "PostToolUse": [
+      {
+        "matcher": "run_command",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "./scripts/lint.sh",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
+  "perch": {
+    "PreInvocation": [
+      {
+        "type": "command",
+        "command": "/bin/sh /Users/alex/.gemini/config/perch/hook.sh PreInvocation",
+        "timeout": 5
+      }
+    ],
+    "PostInvocation": [
+      {
+        "type": "command",
+        "command": "/bin/sh /Users/alex/.gemini/config/perch/hook.sh PostInvocation",
+        "timeout": 5
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/bin/sh /Users/alex/.gemini/config/perch/hook.sh PostToolUse",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "type": "command",
+        "command": "/bin/sh /Users/alex/.gemini/config/perch/hook.sh Stop",
+        "timeout": 5
+      }
+    ]
+  }
+}

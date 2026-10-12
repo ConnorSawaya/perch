@@ -1,0 +1,11 @@
+{
+  "type": "agent-turn-complete",
+  "thread-id": "b5f6c1c2-1111-2222-3333-444455556666",
+  "turn-id": "12345",
+  "cwd": "/Users/example/project",
+  "client": "codex-tui",
+  "input-messages": [
+    "Rename `foo` to `bar` and update the callsites."
+  ],
+  "last-assistant-message": "Rename complete and verified `cargo build` succeeds."
+}

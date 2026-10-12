@@ -1,0 +1,21 @@
+{
+  "hookSpecificOutput": {
+    "hookEventName": "PermissionRequest",
+    "decision": {
+      "behavior": "allow",
+      "updatedPermissions": [
+        {
+          "type": "addRules",
+          "rules": [
+            {
+              "toolName": "Bash",
+              "ruleContent": "python3 -c \"print(6*7)\""
+            }
+          ],
+          "behavior": "allow",
+          "destination": "localSettings"
+        }
+      ]
+    }
+  }
+}

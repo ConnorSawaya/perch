@@ -1,0 +1,24 @@
+{
+  "toolCall": {
+    "name": "replace_file_content",
+    "args": {
+      "TargetFile": "/Users/alex/code/ios-app/Sources/App/ContentView.swift",
+      "Instruction": "Rename the title",
+      "Description": "Rename the navigation title",
+      "AllowMultiple": false,
+      "TargetContent": "Text(\"Hello\")",
+      "ReplacementContent": "Text(\"Perch\")",
+      "StartLine": 12,
+      "EndLine": 12
+    }
+  },
+  "stepIdx": 3,
+  "error": "",
+  "conversationId": "c2a94d17-3f0e-4a8d-8a55-6d2f4e0b9a33",
+  "workspacePaths": [
+    "/Users/alex/code/ios-app"
+  ],
+  "transcriptPath": "/Users/alex/.gemini/antigravity-ide/brain/c2a94d17-3f0e-4a8d-8a55-6d2f4e0b9a33/.system_generated/logs/transcript.jsonl",
+  "artifactDirectoryPath": "/Users/alex/.gemini/antigravity-ide/brain/c2a94d17-3f0e-4a8d-8a55-6d2f4e0b9a33",
+  "modelName": "gemini-3.1-pro-high"
+}

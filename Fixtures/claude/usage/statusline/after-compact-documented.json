@@ -1,0 +1,74 @@
+{
+  "session_id": "11111111-1111-4111-8111-111111111111",
+  "transcript_path": "/Users/test/.claude/projects/-Users-test-dev-alpha/11111111-1111-4111-8111-111111111111.jsonl",
+  "cwd": "/Users/test/dev/alpha",
+  "scratchpad_dir": "/private/tmp/claude-501/-Users-test-dev-alpha/11111111-1111-4111-8111-111111111111/scratchpad",
+  "prompt_id": "55555555-0000-4000-8000-555555555555",
+  "effort": {
+    "level": "medium"
+  },
+  "session_name": "Alpha refactor v2",
+  "model": {
+    "id": "claude-opus-5-5",
+    "display_name": "Opus 5.5"
+  },
+  "workspace": {
+    "current_dir": "/Users/test/dev/alpha",
+    "project_dir": "/Users/test/dev/alpha",
+    "added_dirs": [],
+    "repo": {
+      "host": "github.com",
+      "owner": "example",
+      "name": "alpha"
+    }
+  },
+  "version": "2.1.296",
+  "output_style": {
+    "name": "default"
+  },
+  "cost": {
+    "total_cost_usd": 0.4321,
+    "total_duration_ms": 3600000,
+    "total_api_duration_ms": 95000,
+    "total_lines_added": 156,
+    "total_lines_removed": 23
+  },
+  "context_window": {
+    "total_input_tokens": 0,
+    "total_output_tokens": 0,
+    "context_window_size": 1000000,
+    "current_usage": null,
+    "used_percentage": null,
+    "remaining_percentage": null
+  },
+  "exceeds_200k_tokens": false,
+  "prompt_cache": {
+    "warm": true,
+    "caching_observed": true,
+    "ttl": "1h",
+    "expires_at": 1791659404,
+    "requests": 8,
+    "misses": 1,
+    "expected_rebuilds": 0,
+    "hit_ratio": 0.91,
+    "cache_write_tokens": 25600,
+    "miss_recache_tokens": 9000,
+    "last_miss_at": 1791655200,
+    "last_miss_cause": null,
+    "recache_tokens_if_cold": 50005
+  },
+  "fast_mode": true,
+  "thinking": {
+    "enabled": true
+  },
+  "rate_limits": {
+    "five_hour": {
+      "used_percentage": 24,
+      "resets_at": 1791670200
+    },
+    "seven_day": {
+      "used_percentage": 8,
+      "resets_at": 1792166400
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "my-linter-hook": {
+    "PostToolUse": [
+      {
+        "matcher": "run_command",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "./scripts/lint.sh",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
+  "safety-gate": {
+    "enabled": false,
+    "PreToolUse": [
+      {
+        "matcher": "run_command",
+        "hooks": [
+          {
+            "command": "./scripts/safety-check.sh"
+          }
+        ]
+      }
+    ]
+  },
+  "reminder": {
+    "PreInvocation": [
+      {
+        "type": "command",
+        "command": "./scripts/reminder.sh"
+      }
+    ]
+  }
+}

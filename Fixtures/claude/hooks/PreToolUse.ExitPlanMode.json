@@ -1,0 +1,17 @@
+{
+  "session_id": "eb79e2ab-dcf5-4986-8838-2e9a1222da49",
+  "transcript_path": "/Users/dev/.claude/projects/-Users-dev-projects-demo/eb79e2ab-dcf5-4986-8838-2e9a1222da49.jsonl",
+  "cwd": "/Users/dev/projects/demo",
+  "prompt_id": "9f4236b5-0aac-4016-871c-f7e5d9f98acb",
+  "permission_mode": "plan",
+  "effort": {
+    "level": "medium"
+  },
+  "hook_event_name": "PreToolUse",
+  "tool_name": "ExitPlanMode",
+  "tool_input": {
+    "plan": "Plan: Create plan-D3.txt in the current directory using the Write tool.\nContents: the single word \"hi\".\n",
+    "planFilePath": "/Users/dev/.claude/plans/plan-in-at-most-snappy-nebula.md"
+  },
+  "tool_use_id": "toolu_01SLTAMT24hHHiGkJygj1FuH"
+}

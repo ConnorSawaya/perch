@@ -1,0 +1,15 @@
+{
+  "session_id": "019a9d1e-6c2a-7b30-9f4e-2d1c8a5b7e10",
+  "transcript_path": "/Users/alex/.codex/sessions/2026/10/10/rollout-2026-10-10T09-15-02-019a9d1e-6c2a-7b30-9f4e-2d1c8a5b7e10.jsonl",
+  "cwd": "/Users/alex/code/acme-api",
+  "model": "gpt-5.2-codex",
+  "hook_event_name": "PostToolUse",
+  "permission_mode": "default",
+  "turn_id": "019a9d1e-7a11-7c02-8b6d-51f0c3e2a9d4",
+  "tool_name": "apply_patch",
+  "tool_use_id": "call_Q2x1c3RlclBhdGNoMDAy",
+  "tool_input": {
+    "command": "*** Begin Patch\n*** Update File: src/routes/health.ts\n@@\n-export const VERSION = \"1.4.1\";\n+export const VERSION = \"1.4.2\";\n*** End Patch\n"
+  },
+  "tool_response": "Exit code: 0\nWall time: 0 seconds\nOutput:\nSuccess. Updated the following files:\nM src/routes/health.ts\n"
+}

@@ -1,0 +1,9 @@
+{
+  "session_id": "91f3aca6-75f4-46f3-bf1f-cc739307675c",
+  "transcript_path": "/Users/dev/.claude/projects/-Users-dev-projects-demo/91f3aca6-75f4-46f3-bf1f-cc739307675c.jsonl",
+  "cwd": "/Users/dev/projects/demo",
+  "scratchpad_dir": "/private/tmp/claude-501/-Users-dev-projects-demo/91f3aca6-75f4-46f3-bf1f-cc739307675c/scratchpad",
+  "prompt_id": "fcf4daff-018c-43f5-aaba-7b99ccc7d815",
+  "hook_event_name": "SessionEnd",
+  "reason": "prompt_input_exit"
+}

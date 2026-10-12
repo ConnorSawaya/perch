@@ -1,0 +1,25 @@
+{
+  "pid": 41002,
+  "sessionId": "33333333-3333-4333-8333-333333333333",
+  "cwd": "/Users/test/dev/beta site",
+  "startedAt": 1791745170087,
+  "procStart": "Sun Oct 11 18:59:30 2026",
+  "version": "2.1.295",
+  "peerProtocol": 1,
+  "peerFeatures": [
+    "notify_idle",
+    "reply_across_default_dirs",
+    "artifact_yield"
+  ],
+  "kind": "interactive",
+  "entrypoint": "claude-desktop",
+  "hostSessionId": "local_00000000-0000-4000-8000-00000c0ffee0",
+  "pidDomain": "darwin",
+  "name": "beta site-7q",
+  "nameSource": "derived",
+  "nameSince": 1791745170090,
+  "status": "waiting",
+  "updatedAt": 1791747602015,
+  "statusUpdatedAt": 1791747602015,
+  "waitingFor": "permission prompt"
+}

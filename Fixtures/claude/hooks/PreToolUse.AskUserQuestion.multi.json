@@ -1,0 +1,51 @@
+{
+  "session_id": "1f600053-0c42-4d52-bd87-76f0846bdee2",
+  "transcript_path": "/Users/dev/.claude/projects/-Users-dev-projects-demo/1f600053-0c42-4d52-bd87-76f0846bdee2.jsonl",
+  "cwd": "/Users/dev/projects/demo",
+  "prompt_id": "35309aa5-c228-4af9-aac9-e58d62ec486a",
+  "permission_mode": "default",
+  "effort": {
+    "level": "medium"
+  },
+  "hook_event_name": "PreToolUse",
+  "tool_name": "AskUserQuestion",
+  "tool_input": {
+    "questions": [
+      {
+        "question": "Which color?",
+        "header": "Color",
+        "options": [
+          {
+            "label": "Red",
+            "description": "Choose red"
+          },
+          {
+            "label": "Blue",
+            "description": "Choose blue"
+          }
+        ],
+        "multiSelect": false
+      },
+      {
+        "question": "Which toppings?",
+        "header": "Toppings",
+        "options": [
+          {
+            "label": "Cheese",
+            "description": "Add cheese"
+          },
+          {
+            "label": "Olives",
+            "description": "Add olives"
+          },
+          {
+            "label": "Basil",
+            "description": "Add basil"
+          }
+        ],
+        "multiSelect": true
+      }
+    ]
+  },
+  "tool_use_id": "toolu_014NBG5NhEPAUQ6t3EkBg3EG"
+}

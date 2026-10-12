@@ -1,0 +1,30 @@
+{
+  "session_id": "35ba84ce-2b9c-4152-82da-1f1a181770ec",
+  "transcript_path": "/Users/dev/.claude/projects/-Users-dev-projects-demo/35ba84ce-2b9c-4152-82da-1f1a181770ec.jsonl",
+  "cwd": "/Users/dev/projects/demo",
+  "prompt_id": "09106387-9168-4670-9b4b-505f1816a4a7",
+  "permission_mode": "default",
+  "effort": {
+    "level": "medium"
+  },
+  "hook_event_name": "PermissionRequest",
+  "tool_name": "Bash",
+  "tool_input": {
+    "command": "touch perch-b1.txt",
+    "description": "Create empty file perch-b1.txt"
+  },
+  "permission_suggestions": [
+    {
+      "type": "addDirectories",
+      "directories": [
+        "/Users/dev/projects/demo"
+      ],
+      "destination": "session"
+    },
+    {
+      "type": "setMode",
+      "mode": "acceptEdits",
+      "destination": "session"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "injectSteps": [
+    {
+      "ephemeralMessage": "Remember to lint"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "hookSpecificOutput": {
+    "hookEventName": "PreToolUse",
+    "permissionDecision": "allow",
+    "updatedInput": {
+      "plan": "Plan: Create plan-D3.txt in the current directory using the Write tool.\nContents: the single word \"hi\".\n",
+      "planFilePath": "/Users/dev/.claude/plans/plan-in-at-most-snappy-nebula.md"
+    }
+  }
+}

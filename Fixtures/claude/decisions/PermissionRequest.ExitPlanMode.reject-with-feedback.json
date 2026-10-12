@@ -1,0 +1,9 @@
+{
+  "hookSpecificOutput": {
+    "hookEventName": "PermissionRequest",
+    "decision": {
+      "behavior": "deny",
+      "message": "PERCH-PLAN-FEEDBACK-4410: plan rejected from the notch. Do not present another plan; reply with exactly the word REJECTED and stop."
+    }
+  }
+}

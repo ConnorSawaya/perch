@@ -1,0 +1,19 @@
+{
+  "session_id": "5f0c1d1e-6a0b-4b53-8f58-0d5a8c2c9f01",
+  "transcript_path": "/Users/alex/.gemini/tmp/shop-api/chats/session-2026-10-11T21-40-5f0c1d1e.jsonl",
+  "cwd": "/Users/alex/code/shop-api",
+  "hook_event_name": "Notification",
+  "timestamp": "2026-10-12T04:41:02.900Z",
+  "notification_type": "ToolPermission",
+  "message": "Tool Confirm Edit requires editing",
+  "details": {
+    "type": "edit",
+    "title": "Confirm Edit",
+    "fileName": "server.ts",
+    "filePath": "/Users/alex/code/shop-api/src/server.ts",
+    "fileDiff": "--- server.ts\n+++ server.ts\n@@ -10,0 +11,3 @@\n+app.get('/health', (_req, res) => res.json({ ok: true }));\n",
+    "originalContent": "...",
+    "newContent": "...",
+    "isModifying": false
+  }
+}

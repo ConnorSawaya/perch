@@ -1,0 +1,9 @@
+{
+  "colorScheme": "tokyo night",
+  "notifications": true,
+  "statusLine": {
+    "type": "command",
+    "command": "/bin/sh /Users/alex/.gemini/config/perch/statusline.sh",
+    "stack_with_default": true
+  }
+}

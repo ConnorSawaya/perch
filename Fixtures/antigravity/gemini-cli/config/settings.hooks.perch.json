@@ -1,0 +1,77 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "name": "perch",
+            "type": "command",
+            "command": "/Users/alex/.perch/bin/perch-hook --agent gemini --event SessionStart >/dev/null 2>&1; echo '{}'",
+            "timeout": 5000
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "name": "perch",
+            "type": "command",
+            "command": "/Users/alex/.perch/bin/perch-hook --agent gemini --event SessionEnd >/dev/null 2>&1; echo '{}'",
+            "timeout": 5000
+          }
+        ]
+      }
+    ],
+    "BeforeAgent": [
+      {
+        "hooks": [
+          {
+            "name": "perch",
+            "type": "command",
+            "command": "/Users/alex/.perch/bin/perch-hook --agent gemini --event BeforeAgent >/dev/null 2>&1; echo '{}'",
+            "timeout": 5000
+          }
+        ]
+      }
+    ],
+    "AfterAgent": [
+      {
+        "hooks": [
+          {
+            "name": "perch",
+            "type": "command",
+            "command": "/Users/alex/.perch/bin/perch-hook --agent gemini --event AfterAgent >/dev/null 2>&1; echo '{}'",
+            "timeout": 5000
+          }
+        ]
+      }
+    ],
+    "AfterTool": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "name": "perch",
+            "type": "command",
+            "command": "/Users/alex/.perch/bin/perch-hook --agent gemini --event AfterTool >/dev/null 2>&1; echo '{}'",
+            "timeout": 5000
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "name": "perch",
+            "type": "command",
+            "command": "/Users/alex/.perch/bin/perch-hook --agent gemini --event Notification >/dev/null 2>&1; echo '{}'",
+            "timeout": 5000
+          }
+        ]
+      }
+    ]
+  }
+}

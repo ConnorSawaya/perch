@@ -1,0 +1,9 @@
+{
+  "session_id": "97e70772-763c-4fbb-aedc-cd2dbf09ad39",
+  "transcript_path": "/Users/dev/.claude/projects/-Users-dev-projects-demo/97e70772-763c-4fbb-aedc-cd2dbf09ad39.jsonl",
+  "cwd": "/Users/dev/projects/demo",
+  "prompt_id": "4bd87fb4-fabb-4f88-b459-633772627550",
+  "hook_event_name": "Notification",
+  "message": "Claude needs your permission to use ExitPlanMode",
+  "notification_type": "permission_prompt"
+}

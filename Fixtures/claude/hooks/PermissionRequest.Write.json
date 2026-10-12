@@ -1,0 +1,23 @@
+{
+  "session_id": "17b84d42-ab80-4b91-9df0-1015b2629122",
+  "transcript_path": "/Users/dev/.claude/projects/-Users-dev-projects-demo/17b84d42-ab80-4b91-9df0-1015b2629122.jsonl",
+  "cwd": "/Users/dev/projects/demo",
+  "prompt_id": "82bfbba0-0252-4593-bff2-a08bfa92362a",
+  "permission_mode": "default",
+  "effort": {
+    "level": "medium"
+  },
+  "hook_event_name": "PermissionRequest",
+  "tool_name": "Write",
+  "tool_input": {
+    "file_path": "/Users/dev/projects/demo/w1.txt",
+    "content": "a"
+  },
+  "permission_suggestions": [
+    {
+      "type": "setMode",
+      "mode": "acceptEdits",
+      "destination": "session"
+    }
+  ]
+}

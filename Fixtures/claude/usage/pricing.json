@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "about": "Claude list prices used by Perch to ESTIMATE cost from token counts. USD per million tokens. Not a bill.",
+  "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+  "also_checked": [
+    "https://platform.claude.com/docs/en/models/overview",
+    "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+    "https://platform.claude.com/docs/en/build-with-claude/context-windows",
+    "https://code.claude.com/docs/en/model-config",
+    "https://platform.claude.com/docs/en/build-with-claude/fast-mode",
+    "https://platform.claude.com/docs/en/manage-claude/data-residency"
+  ],
+  "fetched": "2026-10-11",
+  "legacy_source": "https://web.archive.org/web/20250830174646/https://docs.anthropic.com/en/docs/about-claude/pricing",
+  "legacy_source_note": "Official pricing page as archived on 2025-08-30. Used only for the four retired Claude 3 rows marked \"source\": \"archived\"; every other row was read from the live page on the fetched date.",
+  "claude_code_cost_note": "Claude Code's own cost figures (status line cost.total_cost_usd, cost-state lines) come from the price table built into that Claude Code version, which can differ from this file: 2.1.295 and earlier price Sonnet 5.5 cache reads at $0.20 per million tokens, 2.1.296 at $0.10 (Claude Code changelog, 2.1.296).",
+  "currency": "USD",
+  "unit": "per_million_tokens",
+  "web_search_usd_per_request": 0.01,
+  "inference_geo_us_multiplier": 1.1,
+  "batch_multiplier": 0.5,
+  "model_id_normalization": [
+    "lowercase",
+    "drop a trailing '[1m]'",
+    "drop everything up to the last '/' (gateway form such as 'anthropic/claude-opus-4-8')",
+    "drop a provider prefix: '<region>.anthropic.' or 'anthropic.' (Bedrock)",
+    "drop a trailing '-v1:0' or '-v1' (Bedrock)",
+    "drop a trailing '-YYYYMMDD' or '@YYYYMMDD' snapshot date",
+    "then EXACT match on 'id' below; no match = unpriced (cost 0, model listed in unpricedModels)"
+  ],
+  "models": [
+    { "id": "claude-fable-5-1", "name": "Claude Fable 5.1", "family": "fable", "input": 10, "output": 50, "cache_write_5m": 12.5, "cache_write_1h": 20, "cache_read": 0.25, "context_window": 1000000, "max_output": 128000, "confirmed": true },
+    { "id": "claude-mythos-5-1", "name": "Claude Mythos 5.1", "family": "mythos", "input": 10, "output": 50, "cache_write_5m": 12.5, "cache_write_1h": 20, "cache_read": 0.25, "context_window": 1000000, "max_output": 128000, "confirmed": true },
+    { "id": "claude-fable-5", "name": "Claude Fable 5", "family": "fable", "input": 10, "output": 50, "cache_write_5m": 12.5, "cache_write_1h": 20, "cache_read": 1, "context_window": 1000000, "max_output": 128000, "confirmed": true },
+    { "id": "claude-mythos-5", "name": "Claude Mythos 5", "family": "mythos", "input": 10, "output": 50, "cache_write_5m": 12.5, "cache_write_1h": 20, "cache_read": 1, "context_window": 1000000, "max_output": 128000, "confirmed": true },
+
+    { "id": "claude-opus-5-5", "name": "Claude Opus 5.5", "family": "opus", "input": 4, "output": 20, "cache_write_5m": 5, "cache_write_1h": 8, "cache_read": 0.2, "context_window": 1000000, "max_output": 128000, "fast_multiplier": 2, "confirmed": true },
+    { "id": "claude-opus-5", "name": "Claude Opus 5", "family": "opus", "input": 5, "output": 25, "cache_write_5m": 6.25, "cache_write_1h": 10, "cache_read": 0.5, "context_window": 1000000, "max_output": 128000, "fast_multiplier": 2, "confirmed": true },
+    { "id": "claude-opus-4-8", "name": "Claude Opus 4.8", "family": "opus", "input": 5, "output": 25, "cache_write_5m": 6.25, "cache_write_1h": 10, "cache_read": 0.5, "context_window": 1000000, "max_output": 128000, "fast_multiplier": 2, "confirmed": true },
+    { "id": "claude-opus-4-7", "name": "Claude Opus 4.7", "family": "opus", "input": 5, "output": 25, "cache_write_5m": 6.25, "cache_write_1h": 10, "cache_read": 0.5, "context_window": 1000000, "max_output": 128000, "confirmed": true },
+    { "id": "claude-opus-4-6", "name": "Claude Opus 4.6", "family": "opus", "input": 5, "output": 25, "cache_write_5m": 6.25, "cache_write_1h": 10, "cache_read": 0.5, "context_window": 1000000, "claude_code_default_context_window": 200000, "max_output": 128000, "confirmed": true },
+    { "id": "claude-opus-4-5", "name": "Claude Opus 4.5", "family": "opus", "input": 5, "output": 25, "cache_write_5m": 6.25, "cache_write_1h": 10, "cache_read": 0.5, "context_window": 200000, "max_output": 64000, "confirmed": true },
+    { "id": "claude-opus-4-1", "name": "Claude Opus 4.1 (retired)", "family": "opus", "input": 15, "output": 75, "cache_write_5m": 18.75, "cache_write_1h": 30, "cache_read": 1.5, "context_window": 200000, "confirmed": true },
+    { "id": "claude-opus-4", "name": "Claude Opus 4 (retired)", "family": "opus", "input": 15, "output": 75, "cache_write_5m": 18.75, "cache_write_1h": 30, "cache_read": 1.5, "context_window": 200000, "confirmed": true },
+
+    { "id": "claude-sonnet-5-5", "name": "Claude Sonnet 5.5", "family": "sonnet", "input": 2, "output": 10, "cache_write_5m": 2.5, "cache_write_1h": 4, "cache_read": 0.1, "context_window": 1000000, "max_output": 128000, "confirmed": true },
+    { "id": "claude-sonnet-5", "name": "Claude Sonnet 5", "family": "sonnet", "input": 2, "output": 10, "cache_write_5m": 2.5, "cache_write_1h": 4, "cache_read": 0.2, "context_window": 1000000, "max_output": 128000, "confirmed": true },
+    { "id": "claude-sonnet-4-6", "name": "Claude Sonnet 4.6", "family": "sonnet", "input": 3, "output": 15, "cache_write_5m": 3.75, "cache_write_1h": 6, "cache_read": 0.3, "context_window": 1000000, "claude_code_default_context_window": 200000, "max_output": 128000, "confirmed": true },
+    { "id": "claude-sonnet-4-5", "name": "Claude Sonnet 4.5 (deprecated)", "family": "sonnet", "input": 3, "output": 15, "cache_write_5m": 3.75, "cache_write_1h": 6, "cache_read": 0.3, "context_window": 200000, "confirmed": true },
+    { "id": "claude-sonnet-4", "name": "Claude Sonnet 4 (retired)", "family": "sonnet", "input": 3, "output": 15, "cache_write_5m": 3.75, "cache_write_1h": 6, "cache_read": 0.3, "context_window": 200000, "confirmed": true },
+
+    { "id": "claude-haiku-5-5", "name": "Claude Haiku 5.5", "family": "haiku", "input": 0.1, "output": 0.5, "cache_write_5m": 0.125, "cache_write_1h": 0.2, "cache_read": 0.01, "context_window": 1000000, "max_output": 128000,
+      "long_context": { "prompt_tokens_over": 100000, "input": 0.5, "output": 2.5, "cache_write_5m": 0.625, "cache_write_1h": 1, "cache_read": 0.05 }, "confirmed": true },
+    { "id": "claude-haiku-4-5", "name": "Claude Haiku 4.5", "family": "haiku", "input": 1, "output": 5, "cache_write_5m": 1.25, "cache_write_1h": 2, "cache_read": 0.1, "context_window": 200000, "max_output": 64000, "confirmed": true },
+    { "id": "claude-3-5-haiku", "name": "Claude Haiku 3.5 (retired)", "family": "haiku", "input": 0.8, "output": 4, "cache_write_5m": 1, "cache_write_1h": 1.6, "cache_read": 0.08, "context_window": 200000, "confirmed": true },
+
+    { "id": "claude-3-7-sonnet", "name": "Claude Sonnet 3.7 (retired)", "family": "sonnet", "input": 3, "output": 15, "cache_write_5m": 3.75, "cache_write_1h": 6, "cache_read": 0.3, "context_window": 200000, "confirmed": true, "source": "archived", "note": "Retired; not on the live pricing page. Price read from the archived official pricing page of 2025-08-30 (legacy_source)." },
+    { "id": "claude-3-5-sonnet", "name": "Claude Sonnet 3.5 (retired)", "family": "sonnet", "input": 3, "output": 15, "cache_write_5m": 3.75, "cache_write_1h": 6, "cache_read": 0.3, "context_window": 200000, "confirmed": true, "source": "archived", "note": "Retired; not on the live pricing page. Price read from the archived official pricing page of 2025-08-30 (legacy_source)." },
+    { "id": "claude-3-haiku", "name": "Claude Haiku 3 (retired)", "family": "haiku", "input": 0.25, "output": 1.25, "cache_write_5m": 0.3, "cache_write_1h": 0.5, "cache_read": 0.03, "context_window": 200000, "confirmed": true, "source": "archived", "note": "Retired; not on the live pricing page. Price read from the archived official pricing page of 2025-08-30 (legacy_source)." },
+    { "id": "claude-3-opus", "name": "Claude Opus 3 (retired)", "family": "opus", "input": 15, "output": 75, "cache_write_5m": 18.75, "cache_write_1h": 30, "cache_read": 1.5, "context_window": 200000, "confirmed": true, "source": "archived", "note": "Retired; not on the live pricing page. Price read from the archived official pricing page of 2025-08-30 (legacy_source)." }
+  ],
+  "not_priced": [
+    { "id": "claude-mythos-preview", "reason": "Deprecated; has no row on the official pricing page. Context window 1M per the context-windows page." },
+    { "id": "<synthetic>", "reason": "Not a model: Claude Code's marker for locally generated messages. Skip the line." }
+  ]
+}

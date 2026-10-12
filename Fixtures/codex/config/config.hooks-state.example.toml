@@ -1,0 +1,14 @@
+# Example of what Codex itself writes to $CODEX_HOME/config.toml after the user trusts
+# hooks via /hooks or the startup review prompt. Perch must NOT write this table.
+# Key format (codex-rs/hooks/src/lib.rs hook_key): "<source path>:<event_label>:<group_index>:<handler_index>"
+# The hash values below are placeholders, not real hashes.
+
+[hooks.state."/Users/alex/.codex/hooks.json:permission_request:0:0"]
+trusted_hash = "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+
+[hooks.state."/Users/alex/.codex/hooks.json:pre_tool_use:1:0"]
+trusted_hash = "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+
+[hooks.state."/Users/alex/.codex/hooks.json:stop:1:0"]
+enabled = false
+trusted_hash = "sha256:2222222222222222222222222222222222222222222222222222222222222222"

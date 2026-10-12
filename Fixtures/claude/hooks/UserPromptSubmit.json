@@ -1,0 +1,9 @@
+{
+  "session_id": "8596e483-4e72-41a3-9d37-2795122cb958",
+  "transcript_path": "/Users/dev/.claude/projects/-Users-dev-projects-demo/8596e483-4e72-41a3-9d37-2795122cb958.jsonl",
+  "cwd": "/Users/dev/projects/demo",
+  "prompt_id": "2e3162b8-eff2-4316-9d29-396885efcd77",
+  "permission_mode": "default",
+  "hook_event_name": "UserPromptSubmit",
+  "prompt": "Do exactly two tool calls, one after the other, then reply with the single word done. 1) Bash: echo hello-perch  2) Read the file does-not-exist.txt in the current directory."
+}

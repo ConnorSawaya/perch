@@ -1,0 +1,48 @@
+{
+  "hookSpecificOutput": {
+    "hookEventName": "PreToolUse",
+    "permissionDecision": "allow",
+    "updatedInput": {
+      "questions": [
+        {
+          "question": "Which color?",
+          "header": "Color",
+          "options": [
+            {
+              "label": "Red",
+              "description": "Choose red"
+            },
+            {
+              "label": "Blue",
+              "description": "Choose blue"
+            }
+          ],
+          "multiSelect": false
+        },
+        {
+          "question": "Which toppings?",
+          "header": "Toppings",
+          "options": [
+            {
+              "label": "Cheese",
+              "description": "Add cheese"
+            },
+            {
+              "label": "Olives",
+              "description": "Add olives"
+            },
+            {
+              "label": "Basil",
+              "description": "Add basil"
+            }
+          ],
+          "multiSelect": true
+        }
+      ],
+      "answers": {
+        "Which color?": "PERCH-FREE-TEXT-Purple",
+        "Which toppings?": "Cheese, Olives, Basil"
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "session_id": "86119893-36c0-4083-8ed1-a295958baade",
+  "transcript_path": "/Users/dev/.claude/projects/-Users-dev-projects-demo/86119893-36c0-4083-8ed1-a295958baade.jsonl",
+  "cwd": "/Users/dev/projects/demo",
+  "scratchpad_dir": "/private/tmp/claude-501/-Users-dev-projects-demo/86119893-36c0-4083-8ed1-a295958baade/scratchpad",
+  "prompt_id": "eafa4c2b-dc21-40b4-af84-074266041c24",
+  "permission_mode": "default",
+  "effort": {
+    "level": "medium"
+  },
+  "hook_event_name": "PermissionRequest",
+  "tool_name": "AskUserQuestion",
+  "tool_input": {
+    "questions": [
+      {
+        "question": "charlie: which one?",
+        "header": "Pick",
+        "options": [
+          {
+            "label": "Black",
+            "description": "Choose Black"
+          },
+          {
+            "label": "White",
+            "description": "Choose White"
+          }
+        ],
+        "multiSelect": false
+      }
+    ]
+  }
+}

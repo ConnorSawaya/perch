@@ -1,0 +1,30 @@
+{
+  "hookSpecificOutput": {
+    "hookEventName": "PermissionRequest",
+    "decision": {
+      "behavior": "allow",
+      "updatedInput": {
+        "questions": [
+          {
+            "question": "charlie: which one?",
+            "header": "Pick",
+            "options": [
+              {
+                "label": "Black",
+                "description": "Choose Black"
+              },
+              {
+                "label": "White",
+                "description": "Choose White"
+              }
+            ],
+            "multiSelect": false
+          }
+        ],
+        "answers": {
+          "charlie: which one?": "White"
+        }
+      }
+    }
+  }
+}

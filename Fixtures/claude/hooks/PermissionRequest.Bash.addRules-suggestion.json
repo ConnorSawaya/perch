@@ -1,0 +1,29 @@
+{
+  "session_id": "09404700-1845-46d8-8594-3b58f222e536",
+  "transcript_path": "/Users/dev/.claude/projects/-Users-dev-projects-demo/09404700-1845-46d8-8594-3b58f222e536.jsonl",
+  "cwd": "/Users/dev/projects/demo",
+  "prompt_id": "4d4e782d-bd71-420b-b71e-0378ed6506ff",
+  "permission_mode": "default",
+  "effort": {
+    "level": "medium"
+  },
+  "hook_event_name": "PermissionRequest",
+  "tool_name": "Bash",
+  "tool_input": {
+    "command": "python3 -c \"print(6*7)\"",
+    "description": "Run python3 command printing 6*7"
+  },
+  "permission_suggestions": [
+    {
+      "type": "addRules",
+      "rules": [
+        {
+          "toolName": "Bash",
+          "ruleContent": "python3 -c \"print(6*7)\""
+        }
+      ],
+      "behavior": "allow",
+      "destination": "localSettings"
+    }
+  ]
+}
