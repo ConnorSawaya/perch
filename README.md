@@ -9,11 +9,17 @@ It is original code with no third-party libraries, no network access, no analyti
 to your logins or keychain. If Perch is closed, your agents behave exactly as if it were not
 installed.
 
+![The pill in the notch when an agent needs you](docs/images/pill.png)
+
 ![The open panel](docs/images/panel.png)
 
-| Approving an edit | Usage, one square per day |
+| Approving an edit | Answering a question |
 |---|---|
-| ![Approval card](docs/images/approval.png) | ![Usage grid](docs/images/usage.png) |
+| ![Approval card](docs/images/approval.png) | ![Question card](docs/images/question.png) |
+
+| Usage, one square per day | Settings |
+|---|---|
+| ![Usage grid](docs/images/usage.png) | ![Settings](docs/images/settings.png) |
 
 *Screenshots use sample data.*
 
