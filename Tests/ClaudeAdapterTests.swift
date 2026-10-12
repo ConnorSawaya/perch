@@ -1295,6 +1295,12 @@ private func claudeInstallerTests(_ t: TestRunner) {
             t.expect(true, "no real settings file on this Mac; nothing to check")
             return
         }
+        // Once Perch is connected on this Mac the real file already holds Perch's own entries, so
+        // "install then uninstall gives back the original" no longer applies to it.
+        guard !original.contains("perch-hook"), !original.contains("perch-statusline") else {
+            t.expect(true, "Perch is already connected in the real settings file; round trip not applicable")
+            return
+        }
         let box = ClaudeSandbox()
         box.setSettings(original)
         let before = JSONValue.parse(original) ?? .null
