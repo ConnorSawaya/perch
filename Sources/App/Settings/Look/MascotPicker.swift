@@ -74,7 +74,7 @@ private struct SettingsMascotTile: View {
             .frame(width: theme.scaled(50))
             .padding(.vertical, 5)
             .background(shape.fill(isSelected ? theme.island : Color.white.opacity(hovering ? 0.08 : 0.04)))
-            .overlay(shape.strokeBorder(isSelected ? AnyShapeStyle(theme.accentGradient) : AnyShapeStyle(theme.stroke),
+            .overlay(shape.strokeBorder(isSelected ? AnyShapeStyle(theme.accent) : AnyShapeStyle(theme.stroke),
                                         lineWidth: isSelected ? 1.5 : 1))
             .contentShape(shape)
         }

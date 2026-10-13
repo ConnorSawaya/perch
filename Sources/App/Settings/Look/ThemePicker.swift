@@ -73,7 +73,7 @@ private struct SettingsThemeTile: View {
             .frame(maxWidth: .infinity)
             .background(shape.fill(hovering || isSelected ? current.surfaceHover : current.surface))
             .overlay(shape.strokeBorder(isSelected
-                                            ? AnyShapeStyle(palette.accentGradient)
+                                            ? AnyShapeStyle(palette.accent)
                                             : AnyShapeStyle(hovering ? current.strokeStrong : current.stroke),
                                         lineWidth: isSelected ? 1.5 : 1))
             .contentShape(shape)
@@ -95,15 +95,11 @@ private struct SettingsThemeSwatch: View {
         let shape = RoundedRectangle(cornerRadius: 9, style: .continuous)
         ZStack(alignment: .top) {
             shape.fill(palette.island)
-            // The theme's aurora: its colours side by side, fading out downwards.
-            LinearGradient(colors: palette.auroraColors.map { $0.opacity(0.6) }, startPoint: .leading, endPoint: .trailing)
-                .mask(LinearGradient(colors: [.black, .clear], startPoint: .top, endPoint: .bottom))
-                .frame(height: 26)
             VStack(alignment: .leading, spacing: 5) {
                 HStack(spacing: 4) {
-                    Circle().fill(palette.accentGradient).frame(width: 8, height: 8)
+                    Circle().fill(palette.accent).frame(width: 8, height: 8)
                     Capsule().fill(palette.textPrimary.opacity(0.9)).frame(height: 4)
-                    Capsule().fill(palette.accentGradient).frame(width: 16, height: 8)
+                    Capsule().fill(palette.accent).frame(width: 16, height: 8)
                 }
                 Capsule().fill(palette.textSecondary.opacity(0.6)).frame(height: 3).padding(.trailing, 14)
                 HStack(spacing: 3) {

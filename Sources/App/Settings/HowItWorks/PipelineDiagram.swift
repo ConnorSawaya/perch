@@ -148,7 +148,6 @@ private struct PipelineDrawing: View {
                 .frame(width: tile, height: tile)
                 .background(shape.fill(colour.opacity(0.24 * lit)).background(shape.fill(theme.surfaceHover)))
                 .overlay(shape.strokeBorder(lit > 0.05 ? colour.opacity(0.35 + 0.55 * lit) : theme.strokeStrong, lineWidth: 1))
-                .shadow(color: colour.opacity(settings.showGlow ? 0.55 * lit : 0), radius: 9)
                 .scaleEffect(1 + 0.06 * lit)
             VStack(spacing: 1) {
                 Text(stage.title)
@@ -237,9 +236,7 @@ private struct PipelineLane: View {
             var trail = Path()
             trail.move(to: CGPoint(x: min(max(x + tail, startX), endX), y: y))
             trail.addLine(to: CGPoint(x: x, y: y))
-            context.stroke(trail, with: .linearGradient(Gradient(colors: [colour.opacity(0), colour]),
-                                                        startPoint: CGPoint(x: x + tail, y: y), endPoint: CGPoint(x: x, y: y)),
-                           style: StrokeStyle(lineWidth: 2.5, lineCap: .round))
+            context.stroke(trail, with: .color(colour.opacity(0.45)), style: StrokeStyle(lineWidth: 2.5, lineCap: .round))
             context.fill(Path(ellipseIn: CGRect(x: x - 9, y: y - 9, width: 18, height: 18)), with: .color(colour.opacity(0.22)))
             context.fill(Path(ellipseIn: CGRect(x: x - 4, y: y - 4, width: 8, height: 8)), with: .color(colour))
             context.fill(Path(ellipseIn: CGRect(x: x - 1.5, y: y - 1.5, width: 3, height: 3)), with: .color(.white))

@@ -129,9 +129,6 @@ struct WelcomePanel: View {
         .frame(maxWidth: .infinity)
         .padding(.top, isCompact ? Theme.Spacing.xl : Theme.Spacing.xxl)
         .padding(.bottom, isCompact ? Theme.Spacing.l : Theme.Spacing.xl)
-        .background(alignment: .top) {
-            AuroraHeader(isAnimating: false).frame(height: isCompact ? 90 : 150)
-        }
         .background(theme.island)
     }
 
