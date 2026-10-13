@@ -3,7 +3,7 @@
 Perch is a small Mac app that lives in the MacBook notch and shows what your AI coding agents are
 doing. When an agent needs you — permission to run a command, an answer to a question, a plan to
 approve — the notch tells you and lets you answer right there. One click on a session takes you to
-its terminal tab. It also shows how much of your usage limits you have used.
+its terminal tab. Your 5-hour and weekly limits sit beside the notch.
 
 It is original code with no third-party libraries, no network access, no analytics and no access
 to your logins or keychain. If Perch is closed, your agents behave exactly as if it were not
@@ -17,9 +17,7 @@ installed.
 |---|---|
 | ![Approval card](docs/images/approval.png) | ![Question card](docs/images/question.png) |
 
-| Usage, one square per day | Connecting agents |
-|---|---|
-| ![Usage grid](docs/images/usage.png) | ![Settings](docs/images/settings.png) |
+![Connecting agents in Settings](docs/images/settings.png)
 
 *Screenshots use sample data.*
 
