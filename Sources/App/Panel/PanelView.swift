@@ -18,18 +18,22 @@ struct PanelView: View {
     @EnvironmentObject private var ui: UIState
     @Environment(\.accessibilityReduceMotion) private var systemReduceMotion
 
+    /// Height of two session rows plus the list's padding.
+    private static let twoRows: CGFloat = 112
+    /// Height of the demo footer, which sits under the list.
+    private static let demoBar: CGFloat = 46
+
     /// Sum of the natural heights of the parts below, as last measured.
     @State private var naturalHeight: CGFloat = 0
 
     var body: some View {
         VStack(spacing: 0) {
             PanelStrip().measuresPanelHeight()
-            PanelHeader().measuresPanelHeight()
             PerchScroll {
                 tabContent
-                    .padding(.horizontal, Theme.Spacing.l)
+                    .padding(.horizontal, Theme.Spacing.s)
                     .padding(.top, Theme.Spacing.xs)
-                    .padding(.bottom, Theme.Spacing.xl)
+                    .padding(.bottom, Theme.Spacing.m)
                     .frame(maxWidth: .infinity, alignment: .top)
                     .measuresPanelHeight()
             }
@@ -48,23 +52,18 @@ struct PanelView: View {
 
     @ViewBuilder
     private var tabContent: some View {
-        Group {
-            switch ui.panelTab {
-            case .sessions: SessionListView()
-            case .usage: UsagePanelView()
-            case .activity: ActivityPanelView()
-            }
-        }
-        .id(ui.panelTab)
-        .transition(.opacity)
-        .animation(PerchMotion.fade(reduce: settings.prefersCalm(systemReduceMotion)), value: ui.panelTab)
+        SessionListView()
     }
 
     /// The measured height, kept inside the limits the window allows. Zero until first measured.
     private var wantedHeight: CGFloat {
         guard naturalHeight > 0 else { return 0 }
-        let limit = min(max(CGFloat(settings.panelMaxHeight), IslandMetrics.minPanelHeight), IslandMetrics.maxPanelHeight)
-        return min(max(naturalHeight.rounded(.up), ui.notchSize.height + 60), limit)
+        let tallest = min(max(CGFloat(settings.panelMaxHeight), IslandMetrics.minPanelHeight), IslandMetrics.maxPanelHeight)
+        // With nothing waiting for an answer the panel stays small: room for two sessions, and the
+        // rest scroll. A request card needs its full height, so then the usual limit applies.
+        let small = ui.notchSize.height + Self.twoRows + (ui.isDemo ? Self.demoBar : 0)
+        let limit = sessions.pending.isEmpty ? min(tallest, small) : tallest
+        return min(max(naturalHeight.rounded(.up), ui.notchSize.height + 40), limit)
     }
 
     private func report(_ wanted: CGFloat) {

@@ -55,22 +55,22 @@ struct PanelStrip: View {
     private func limits(_ theme: Theme) -> some View {
         let readouts = UsageReadout.limits(usage: usage.usage)
         if !readouts.isEmpty {
-            Button {
-                ui.panelTab = .usage
-            } label: {
-                ViewThatFits(in: .horizontal) {
-                    HStack(spacing: 10) {
-                        ForEach(readouts, id: \.label) { UsageReadoutView(readout: $0, showsLabel: true, ringSize: 12) }
+            // Plain numbers so both limits fit beside the notch: "5h 37%  7d 82%".
+            HStack(spacing: 8) {
+                ForEach(readouts, id: \.label) { readout in
+                    let percent = readout.usedPercent.isFinite ? Int(min(max(readout.usedPercent, 0), 100).rounded()) : 0
+                    HStack(spacing: 3) {
+                        Text(readout.label == "Week" ? "7d" : readout.label).foregroundStyle(theme.textTertiary)
+                        Text("\(percent)%")
+                            .foregroundStyle(Double(percent) >= settings.warnAtPercent ? theme.warning : theme.textSecondary)
                     }
-                    // Narrow panel: only the limit that is closest to running out.
-                    if let fullest = readouts.max(by: { $0.usedPercent < $1.usedPercent }) {
-                        UsageReadoutView(readout: fullest, showsLabel: true, ringSize: 12)
-                    }
+                    .help(readout.title)
                 }
-                .contentShape(Rectangle())
             }
-            .buttonStyle(.plain)
-            .accessibilityHint("Opens the usage tab")
+            .font(theme.font(size: 10.5, weight: .semibold))
+            .monospacedDigit()
+            .lineLimit(1)
+            .fixedSize()
         }
     }
 }

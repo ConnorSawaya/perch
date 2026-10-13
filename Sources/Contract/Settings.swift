@@ -39,7 +39,7 @@ final class AppSettings: ObservableObject {
     @Published var useAgentColors = true { didSet { save("useAgentColors", useAgentColors) } }
     @Published var reduceMotion = false { didSet { save("reduceMotion", reduceMotion) } }
     /// Expanded panel width in points (420...760).
-    @Published var panelWidth = 520.0 { didSet { save("panelWidth", panelWidth) } }
+    @Published var panelWidth = 400.0 { didSet { save("panelWidth", panelWidth) } }
     /// Expanded panel maximum height in points (320...720).
     @Published var panelMaxHeight = 520.0 { didSet { save("panelMaxHeight", panelMaxHeight) } }
     /// Multiplier applied to all text sizes (0.85...1.3).
@@ -53,7 +53,7 @@ final class AppSettings: ObservableObject {
     // MARK: Behavior
     @Published var expandTrigger = ExpandTrigger.hover { didSet { save("expandTrigger", expandTrigger.rawValue) } }
     /// Seconds the pointer must rest on the pill before it opens (0...0.8).
-    @Published var hoverDelay = 0.15 { didSet { save("hoverDelay", hoverDelay) } }
+    @Published var hoverDelay = 0.6 { didSet { save("hoverDelay", hoverDelay) } }
     /// Seconds after the pointer leaves before the panel closes (0...2).
     @Published var collapseDelay = 0.4 { didSet { save("collapseDelay", collapseDelay) } }
     @Published var autoExpandOnAttention = true { didSet { save("autoExpandOnAttention", autoExpandOnAttention) } }

@@ -213,8 +213,9 @@ private func screenGeometryTests(_ t: TestRunner) {
             settings.pillStyle = .compact
             t.expectEqual(zones().pill.width, 185 + 44 * 2)
 
-            // Expanded: the default panel is 520 wide and 220 tall until the views ask for more.
+            // Expanded: a 520-wide panel is 220 tall until the views ask for more.
             settings.pillStyle = .detailed
+            settings.panelWidth = 520
             ui.isExpanded = true
             t.expectEqual(zones().island, CGRect(x: 497, y: 762, width: 520, height: 220))
             let inPanel = zones().hit(CGPoint(x: 520, y: 800))

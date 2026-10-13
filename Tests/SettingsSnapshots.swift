@@ -703,7 +703,7 @@ private func checkControlsRespondToClicks() {
     settings.soundsEnabled = false
     settings.theme = .forest
     settings.resetToDefaults()
-    settingsCheck(settings.theme == .midnight && settings.panelWidth == 520 && settings.soundsEnabled,
+    settingsCheck(settings.theme == .midnight && settings.panelWidth == 400 && settings.soundsEnabled,
                   "reset puts settings back to their defaults")
 }
 

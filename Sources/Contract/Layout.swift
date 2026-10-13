@@ -12,7 +12,7 @@ enum IslandMetrics {
     /// Largest values the size settings allow.
     static let maxPanelWidth: CGFloat = 760
     static let maxPanelHeight: CGFloat = 720
-    static let minPanelWidth: CGFloat = 420
+    static let minPanelWidth: CGFloat = 320
     static let minPanelHeight: CGFloat = 320
     /// Transparent room around the island for glow and shadow.
     static let margin: CGFloat = 40
