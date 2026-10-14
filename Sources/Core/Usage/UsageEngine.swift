@@ -72,6 +72,9 @@ final class UsageEngine: UsageEngineProtocol {
     private var lastTurnRefresh = Date.distantPast
     private var refreshTimer: Timer?
     private var heartbeatTimer: Timer?
+    /// Asks Anthropic for Claude's limits while "Live Claude limits" is on.
+    private var liveLimitsTimer: Timer?
+    private var liveLimitsFailureLogged = false
     private var subscriptions = Set<AnyCancellable>()
     private var observers: [NSObjectProtocol] = []
 
@@ -132,6 +135,7 @@ final class UsageEngine: UsageEngineProtocol {
             let heartbeat = Timer(timeInterval: Self.heartbeatSeconds, repeats: true) { [weak self] _ in self?.heartbeat() }
             RunLoop.main.add(heartbeat, forMode: .common)
             heartbeatTimer = heartbeat
+            scheduleLiveLimits()
             watchSettings()
             // A new day or a new time zone moves every "today" boundary: build the totals again.
             for name in [Notification.Name.NSCalendarDayChanged, Notification.Name.NSSystemTimeZoneDidChange] {
@@ -151,6 +155,8 @@ final class UsageEngine: UsageEngineProtocol {
             refreshTimer = nil
             heartbeatTimer?.invalidate()
             heartbeatTimer = nil
+            liveLimitsTimer?.invalidate()
+            liveLimitsTimer = nil
             subscriptions.removeAll()
             observers.forEach(NotificationCenter.default.removeObserver)
             observers.removeAll()
@@ -178,6 +184,9 @@ final class UsageEngine: UsageEngineProtocol {
         settings.$usageRefreshMinutes.dropFirst().removeDuplicates()
             .sink { [weak self] minutes in self?.scheduleRefreshTimer(minutes: minutes) }
             .store(in: &subscriptions)
+        settings.$liveClaudeLimits.dropFirst().removeDuplicates()
+            .sink { [weak self] _ in DispatchQueue.main.async { self?.scheduleLiveLimits() } }
+            .store(in: &subscriptions)
         settings.$collectActivityStats.dropFirst().removeDuplicates()
             .sink { [weak self] isOn in
                 // Switched off: stop timing the sessions that are running. Saved days stay until cleared.
@@ -197,6 +206,40 @@ final class UsageEngine: UsageEngineProtocol {
             .store(in: &subscriptions)
     }
 
+    // MARK: Live Claude limits
+
+    /// Every three minutes (and right away) while the setting is on; nothing at all while it is off.
+    private func scheduleLiveLimits() {
+        liveLimitsTimer?.invalidate()
+        liveLimitsTimer = nil
+        guard isStarted, settings.liveClaudeLimits else { return }
+        let timer = Timer(timeInterval: 180, repeats: true) { [weak self] _ in self?.fetchLiveLimits() }
+        timer.tolerance = 15
+        RunLoop.main.add(timer, forMode: .common)
+        liveLimitsTimer = timer
+        fetchLiveLimits()
+    }
+
+    private func fetchLiveLimits() {
+        guard settings.liveClaudeLimits, settings.claudeEnabled else { return }
+        ClaudeLiveLimits.fetch { [weak self] result in
+            guard let self, self.isStarted else { return }
+            switch result {
+            case .success(let report):
+                self.liveLimitsFailureLogged = false
+                if self.limits.merge(report) { self.limitsNeedSaving = true }
+                self.publish()
+                self.scheduleSave()
+            case .failure(let failure):
+                // Logged once per run of failures, so a long outage does not fill the log.
+                if !self.liveLimitsFailureLogged {
+                    Log.info("Live Claude limits unavailable: \(failure).", "usage")
+                    self.liveLimitsFailureLogged = true
+                }
+            }
+        }
+    }
+
     // MARK: UsageEngineProtocol — scanning files
 
     /// Rescans the agents' files in the background and updates the store when done. Requests
@@ -209,6 +252,7 @@ final class UsageEngine: UsageEngineProtocol {
             } else {
                 startScan()
             }
+            if isStarted { fetchLiveLimits() }
         }
     }
 

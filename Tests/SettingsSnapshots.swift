@@ -233,7 +233,7 @@ private func snapshotVariations(_ out: URL) {
 /// and is deliberately not shown; add a name here when a control for it is added to a page.
 private let exposedSettings: [String] = [
     // General
-    "launchAtLogin", "showMenuBarIcon", "expandTrigger", "autoExpandOnAttention", "hideWhenNoSessions",
+    "launchAtLogin", "showMenuBarIcon", "expandTrigger", "autoExpandOnAttention", "hideWhenNoSessions", "liveClaudeLimits",
     // Look ("Animations" drives showGlow, showParticles and reduceMotion together)
     "theme", "showMascot", "mascotStyle", "textScale", "showGlow", "showParticles", "reduceMotion",
     "showUsageInPill", "pillMetric",

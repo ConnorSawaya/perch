@@ -33,5 +33,11 @@ struct GeneralSettingsPage: View {
                               subtitle: "The pill disappears while there are no sessions and comes back when one starts.",
                               systemImage: "moon.zzz.fill", isOn: $settings.hideWhenNoSessions)
         }
+
+        SettingsSection("Limits", systemImage: "gauge.with.dots.needle.33percent") {
+            SettingsToggleRow("Live Claude limits",
+                              subtitle: "Checks your Claude limits with Anthropic every few minutes, using Claude Code's saved login. macOS asks once before Perch can read it.",
+                              systemImage: "arrow.clockwise", isOn: $settings.liveClaudeLimits)
+        }
     }
 }

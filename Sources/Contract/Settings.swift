@@ -119,6 +119,8 @@ final class AppSettings: ObservableObject {
     @Published var usageRefreshMinutes = 5.0 { didSet { save("usageRefreshMinutes", usageRefreshMinutes) } }
     @Published var collectActivityStats = true { didSet { save("collectActivityStats", collectActivityStats) } }
     @Published var usageWarnings = true { didSet { save("usageWarnings", usageWarnings) } }
+    /// Ask Anthropic for Claude's limits every few minutes, using Claude Code's saved login. Off by default.
+    @Published var liveClaudeLimits = false { didSet { save("liveClaudeLimits", liveClaudeLimits) } }
     /// Warn when a limit passes this percentage (50...95).
     @Published var warnAtPercent = 80.0 { didSet { save("warnAtPercent", warnAtPercent) } }
 
@@ -256,6 +258,7 @@ final class AppSettings: ObservableObject {
         usageRefreshMinutes = double("usageRefreshMinutes", usageRefreshMinutes)
         collectActivityStats = bool("collectActivityStats", collectActivityStats)
         usageWarnings = bool("usageWarnings", usageWarnings)
+        liveClaudeLimits = bool("liveClaudeLimits", liveClaudeLimits)
         warnAtPercent = double("warnAtPercent", warnAtPercent)
         activityLogEnabled = bool("activityLogEnabled", activityLogEnabled)
         debugLogging = bool("debugLogging", debugLogging)
@@ -290,7 +293,7 @@ final class AppSettings: ObservableObject {
         geminiEnabled = o.geminiEnabled
         showUsageInPill = o.showUsageInPill; pillMetric = o.pillMetric; showCostEstimates = o.showCostEstimates
         usageShowRemaining = o.usageShowRemaining; usageRefreshMinutes = o.usageRefreshMinutes
-        collectActivityStats = o.collectActivityStats; usageWarnings = o.usageWarnings; warnAtPercent = o.warnAtPercent
+        collectActivityStats = o.collectActivityStats; usageWarnings = o.usageWarnings; liveClaudeLimits = o.liveClaudeLimits; warnAtPercent = o.warnAtPercent
         activityLogEnabled = o.activityLogEnabled; debugLogging = o.debugLogging
         hasCompletedOnboarding = o.hasCompletedOnboarding
     }
