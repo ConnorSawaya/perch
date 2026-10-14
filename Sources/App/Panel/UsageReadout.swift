@@ -18,10 +18,9 @@ struct UsageReadout: Equatable {
     /// 0...100.
     var usedPercent: Double
     var resetsAt: Date?
+    /// When this reading was taken (nil when unknown). Old readings are drawn dimmed.
+    var updatedAt: Date? = nil
 
-    /// Window ids agents use for their short limit and their long limit (see RateWindow.id).
-    private static let shortWindowIDs: Set<String> = ["5h", "primary", "five_hour", "session"]
-    private static let longWindowIDs: Set<String> = ["7d", "secondary", "weekly", "week"]
 
     /// The reading for a "Pill shows" choice, or nil when there is no data for it yet.
     static func pick(_ metric: PillMetric, usage: [AgentKind: AgentUsage], headline: Session?) -> UsageReadout? {
@@ -29,12 +28,12 @@ struct UsageReadout: Equatable {
         case .none:
             return nil
         case .fiveHour:
-            return fullest(in: usage, ids: shortWindowIDs).map {
-                UsageReadout(label: "5h", title: $0.label, usedPercent: $0.usedPercent, resetsAt: $0.resetsAt)
+            return fullest(in: usage, short: true).map {
+                UsageReadout(label: "5h", title: $0.window.label, usedPercent: $0.window.usedPercent, resetsAt: $0.window.resetsAt, updatedAt: $0.updatedAt)
             }
         case .weekly:
-            return fullest(in: usage, ids: longWindowIDs).map {
-                UsageReadout(label: "Week", title: $0.label, usedPercent: $0.usedPercent, resetsAt: $0.resetsAt)
+            return fullest(in: usage, short: false).map {
+                UsageReadout(label: "Week", title: $0.window.label, usedPercent: $0.window.usedPercent, resetsAt: $0.window.resetsAt, updatedAt: $0.updatedAt)
             }
         case .context:
             guard let percent = headline?.contextPercent, percent.isFinite else { return nil }
@@ -47,11 +46,19 @@ struct UsageReadout: Equatable {
         [PillMetric.fiveHour, .weekly].compactMap { pick($0, usage: usage, headline: nil) }
     }
 
-    private static func fullest(in usage: [AgentKind: AgentUsage], ids: Set<String>) -> RateWindow? {
+    private static func fullest(in usage: [AgentKind: AgentUsage], short: Bool) -> (window: RateWindow, updatedAt: Date?)? {
         usage.values
-            .flatMap { $0.windows }
-            .filter { ids.contains($0.id) && $0.usedPercent.isFinite }
-            .max { $0.usedPercent < $1.usedPercent }
+            .flatMap { agent in agent.windows.map { (window: $0, updatedAt: agent.updatedAt) } }
+            .filter { isShort($0.window) == short && $0.window.usedPercent.isFinite }
+            .max { $0.window.usedPercent < $1.window.usedPercent }
+    }
+
+    static func isShort(_ window: RateWindow) -> Bool { window.isShortWindow }
+
+    /// True when the reading is more than an hour old.
+    func isStale(now: Date = Date()) -> Bool {
+        guard let updatedAt else { return false }
+        return now.timeIntervalSince(updatedAt) > 3600
     }
 
     /// The number to print: used, or what is left when "Show remaining" is on.

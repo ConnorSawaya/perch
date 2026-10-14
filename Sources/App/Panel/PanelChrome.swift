@@ -59,12 +59,16 @@ struct PanelStrip: View {
             HStack(spacing: 8) {
                 ForEach(readouts, id: \.label) { readout in
                     let percent = readout.usedPercent.isFinite ? Int(min(max(readout.usedPercent, 0), 100).rounded()) : 0
+                    let stale = readout.isStale()
                     HStack(spacing: 3) {
                         Text(readout.label == "Week" ? "7d" : readout.label).foregroundStyle(theme.textTertiary)
                         Text("\(percent)%")
-                            .foregroundStyle(Double(percent) >= settings.warnAtPercent ? theme.warning : theme.textSecondary)
+                            .foregroundStyle(stale ? theme.textTertiary
+                                             : Double(percent) >= settings.warnAtPercent ? theme.warning : theme.textSecondary)
                     }
-                    .help(readout.title)
+                    .opacity(stale ? 0.6 : 1)
+                    .help(stale ? "\(readout.title), last updated \(PerchFormat.ago(readout.updatedAt ?? Date())). Claude Code only reports its limits while a terminal session is running."
+                                : readout.title)
                 }
             }
             .font(theme.font(size: 10.5, weight: .semibold))

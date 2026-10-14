@@ -146,7 +146,7 @@ enum UsageHeat {
                 let value = settings.usageShowRemaining ? 100 - window.usedPercent : window.usedPercent
                 let percent = value.isFinite ? "\(Int(min(max(value, 0), 100).rounded()))%" : "–"
                 // Codex calls its two windows "primary" and "secondary"; they are its 5-hour and weekly limits.
-                let name = window.id.hasSuffix("primary") ? "5h" : window.id.hasSuffix("secondary") ? "7d" : window.id
+                let name = window.isShortWindow ? "5h" : "7d"
                 return "\(several ? usage.agent.monogram + " " : "")\(name) \(percent)"
             }
         }.joined(separator: " · ")
