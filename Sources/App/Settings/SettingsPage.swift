@@ -23,13 +23,26 @@ struct SettingsPage: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        // The same soft light the notch panel has behind its header, tinted like the page's icon.
+        .background(alignment: .top) {
+            AuroraHeader(colors: [page.tint(theme), theme.accent, theme.accentAlt], isAnimating: false, intensity: 0.5)
+                .frame(height: 130)
+        }
     }
 
     private func header(_ theme: Theme) -> some View {
+        let tint = page.tint(theme)
+        let shape = RoundedRectangle(cornerRadius: 10, style: .continuous)
         return HStack(alignment: .center, spacing: Theme.Spacing.l) {
+            Image(systemName: page.systemImage)
+                .font(theme.font(size: 15, weight: .semibold))
+                .foregroundStyle(tint)
+                .frame(width: theme.scaled(36), height: theme.scaled(36))
+                .background(shape.fill(tint.opacity(0.18)).background(shape.fill(theme.surface)))
+                .overlay(shape.strokeBorder(tint.opacity(0.35), lineWidth: 1))
             VStack(alignment: .leading, spacing: 1) {
                 Text(page.title)
-                    .font(theme.font(size: 19, weight: .semibold))
+                    .font(theme.font(size: 19, weight: .semibold, design: .rounded))
                     .foregroundStyle(theme.textPrimary)
             }
         }

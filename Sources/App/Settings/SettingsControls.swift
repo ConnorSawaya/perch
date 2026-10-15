@@ -125,7 +125,7 @@ struct SettingsSlider: View {
         let lit = (isHovering || isDragging) && isEnabled
         ZStack(alignment: .leading) {
             Capsule().fill(Color.white.opacity(0.12)).frame(height: Self.track)
-            Capsule().fill(theme.accent)
+            Capsule().fill(theme.accentGradient)
                 .frame(width: Self.knob / 2 + travel * fraction, height: Self.track)
             Circle()
                 .fill(Color.white)

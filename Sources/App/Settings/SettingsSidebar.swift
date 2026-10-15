@@ -91,13 +91,17 @@ private struct SettingsSidebarItem: View {
 
     var body: some View {
         let theme = Theme.current(settings)
+        let tint = page.tint(theme)
         let shape = RoundedRectangle(cornerRadius: Theme.Radius.control, style: .continuous)
         Button(action: action) {
             HStack(spacing: Theme.Spacing.m) {
                 Image(systemName: page.systemImage)
                     .font(theme.font(size: 10.5, weight: .semibold))
-                    .foregroundStyle(isSelected ? theme.textPrimary : theme.textTertiary)
+                    .foregroundStyle(isSelected ? theme.textOnAccent : tint)
                     .frame(width: theme.scaled(22), height: theme.scaled(22))
+                    .background(RoundedRectangle(cornerRadius: 6, style: .continuous)
+                        .fill(isSelected ? AnyShapeStyle(LinearGradient(colors: [tint, tint.opacity(0.7)], startPoint: .top, endPoint: .bottom))
+                                         : AnyShapeStyle(tint.opacity(0.16))))
                 Text(page.title)
                     .font(theme.font(size: 12.5, weight: isSelected ? .semibold : .medium))
                     .foregroundStyle(isSelected ? theme.textPrimary : theme.textSecondary)
