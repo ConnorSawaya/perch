@@ -208,12 +208,12 @@ final class UsageEngine: UsageEngineProtocol {
 
     // MARK: Live Claude limits
 
-    /// Every three minutes (and right away) while the setting is on; nothing at all while it is off.
+    /// Every five minutes (and right away) while the setting is on; nothing at all while it is off.
     private func scheduleLiveLimits() {
         liveLimitsTimer?.invalidate()
         liveLimitsTimer = nil
         guard isStarted, settings.liveClaudeLimits else { return }
-        let timer = Timer(timeInterval: 180, repeats: true) { [weak self] _ in self?.fetchLiveLimits() }
+        let timer = Timer(timeInterval: 300, repeats: true) { [weak self] _ in self?.fetchLiveLimits() }
         timer.tolerance = 15
         RunLoop.main.add(timer, forMode: .common)
         liveLimitsTimer = timer

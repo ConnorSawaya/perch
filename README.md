@@ -8,7 +8,7 @@ its terminal tab. Your 5-hour and weekly limits sit beside the notch.
 It is original code with no third-party libraries and no analytics. It makes no network requests
 and never reads your logins, except for one optional switch: **Live Claude limits** (Settings →
 General) reads Claude Code's saved login from your keychain and asks Anthropic for your current
-5-hour and weekly limits every three minutes. It uses an undocumented endpoint, so it may stop
+5-hour and weekly limits every five minutes. It uses an undocumented endpoint, so it may stop
 working if Anthropic changes it. Without it, Claude's limits update only while a terminal `claude`
 session is running. If Perch is closed, your agents behave exactly as if it were not
 installed.

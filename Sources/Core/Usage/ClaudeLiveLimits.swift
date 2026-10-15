@@ -2,16 +2,17 @@
 // even when you only use the Claude app (which, unlike a terminal session, sends no status line).
 //
 // Off unless "Live Claude limits" is switched on in Settings. When on, every few minutes it:
-//   1. reads the login Claude Code saved in your keychain ("Claude Code-credentials"); macOS asks
-//      you once whether Perch may read it,
+//   1. reads the login Claude Code saved in your keychain ("Claude Code-credentials") through
+//      macOS's own `security` tool, which that keychain item already trusts, so there is no password
+//      prompt; the login is then kept in memory until it expires or Anthropic turns it down,
 //   2. sends one request to Anthropic's usage endpoint with that login,
 //   3. hands back the 5-hour and weekly percentages and their reset times.
 // It never refreshes, changes or stores the login, and sends it nowhere but Anthropic. If the saved
-// login has expired it simply waits until Claude Code renews it. The endpoint is not a documented
+// login has expired it simply waits until Claude Code renews it. When Anthropic says "too many
+// requests" it backs off for a while. The endpoint is not a documented
 // public API, so any failure is logged once and the other limit sources carry on as before.
 
 import Foundation
-import Security
 
 enum ClaudeLiveLimits {
     static let endpoint = URL(string: "https://api.anthropic.com/api/oauth/usage")!
@@ -22,20 +23,38 @@ enum ClaudeLiveLimits {
         case loginExpired
         case http(Int)
         case unreadableReply
+        /// Anthropic asked us to slow down; no request was sent this time.
+        case backingOff
     }
+
+    /// The login in memory, so the keychain is read only when it changes. Guarded by `lock`.
+    private static var cachedLogin: Login?
+    /// No request before this time (set after a "too many requests" reply). Guarded by `lock`.
+    private static var quietUntil = Date.distantPast
+    private static let lock = NSLock()
 
     /// Reads the saved login and asks Anthropic. Runs on a background queue; calls back on main.
     static func fetch(completion: @escaping (Result<LimitReport, Failure>) -> Void) {
         DispatchQueue.global(qos: .utility).async {
             let finish = { (result: Result<LimitReport, Failure>) in DispatchQueue.main.async { completion(result) } }
-            guard let login = savedLogin() else { return finish(.failure(.noSavedLogin)) }
+            if (lock.withLock { quietUntil }) > Date() { return finish(.failure(.backingOff)) }
+            guard let login = currentLogin() else { return finish(.failure(.noSavedLogin)) }
             if let expires = login.expiresAt, expires < Date() { return finish(.failure(.loginExpired)) }
             var request = URLRequest(url: endpoint, timeoutInterval: 15)
             request.setValue("Bearer \(login.accessToken)", forHTTPHeaderField: "Authorization")
             request.setValue("oauth-2025-04-20", forHTTPHeaderField: "anthropic-beta")
             request.setValue("application/json", forHTTPHeaderField: "Accept")
             URLSession.shared.dataTask(with: request) { data, response, _ in
-                let status = (response as? HTTPURLResponse)?.statusCode ?? 0
+                let http = response as? HTTPURLResponse
+                let status = http?.statusCode ?? 0
+                if status == 401 || status == 403 {
+                    // Turned down: Claude Code has probably renewed its login. Read it again next time.
+                    lock.withLock { cachedLogin = nil }
+                }
+                if status == 429 {
+                    let wait = (http?.value(forHTTPHeaderField: "Retry-After")).flatMap(Double.init) ?? 900
+                    lock.withLock { quietUntil = Date().addingTimeInterval(min(max(wait, 300), 3600)) }
+                }
                 guard status == 200, let data else { return finish(.failure(.http(status))) }
                 guard let report = parse(data, plan: login.plan, at: Date()) else { return finish(.failure(.unreadableReply)) }
                 finish(.success(report))
@@ -63,16 +82,30 @@ enum ClaudeLiveLimits {
         var plan: String?
     }
 
-    /// Claude Code's saved login, or nil when there is none (or the user declined access).
+    /// The login in memory if it is still good, otherwise a fresh read of the keychain.
+    static func currentLogin(now: Date = Date()) -> Login? {
+        if let cached = (lock.withLock { cachedLogin }), (cached.expiresAt ?? .distantFuture) > now.addingTimeInterval(60) {
+            return cached
+        }
+        let fresh = savedLogin()
+        lock.withLock { cachedLogin = fresh }
+        return fresh
+    }
+
+    /// Claude Code's saved login, read with `/usr/bin/security`. Claude Code writes the item with that
+    /// same tool, so the keychain lets it read it back without asking for your password (reading it
+    /// directly from Perch would make macOS ask every time Claude Code renews the login).
     static func savedLogin() -> Login? {
-        let query: [String: Any] = [
-            kSecClass as String: kSecClassGenericPassword,
-            kSecAttrService as String: keychainService,
-            kSecReturnData as String: true,
-            kSecMatchLimit as String: kSecMatchLimitOne,
-        ]
-        var item: CFTypeRef?
-        guard SecItemCopyMatching(query as CFDictionary, &item) == errSecSuccess, let data = item as? Data else { return nil }
+        let tool = Process()
+        tool.executableURL = URL(fileURLWithPath: "/usr/bin/security")
+        tool.arguments = ["find-generic-password", "-s", keychainService, "-w"]
+        let output = Pipe()
+        tool.standardOutput = output
+        tool.standardError = FileHandle.nullDevice
+        do { try tool.run() } catch { return nil }
+        let data = output.fileHandleForReading.readDataToEndOfFile()
+        tool.waitUntilExit()
+        guard tool.terminationStatus == 0 else { return nil }
         return login(from: data)
     }
 
