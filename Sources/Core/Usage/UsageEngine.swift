@@ -75,6 +75,10 @@ final class UsageEngine: UsageEngineProtocol {
     /// Asks Anthropic for Claude's limits while "Live Claude limits" is on.
     private var liveLimitsTimer: Timer?
     private var liveLimitsFailureLogged = false
+    /// When the last good Claude reading arrived, and when the fallback probe last ran.
+    private var lastLiveLimits = Date.distantPast
+    private var lastProbe = Date.distantPast
+    private var probeRunning = false
     private var subscriptions = Set<AnyCancellable>()
     private var observers: [NSObjectProtocol] = []
 
@@ -227,15 +231,43 @@ final class UsageEngine: UsageEngineProtocol {
             switch result {
             case .success(let report):
                 self.liveLimitsFailureLogged = false
-                if self.limits.merge(report) { self.limitsNeedSaving = true }
-                self.publish()
-                self.scheduleSave()
+                self.takeLiveLimits(report)
             case .failure(let failure):
                 // Logged once per run of failures, so a long outage does not fill the log.
                 if !self.liveLimitsFailureLogged {
                     Log.info("Live Claude limits unavailable: \(failure).", "usage")
                     self.liveLimitsFailureLogged = true
                 }
+                self.probeIfStale(after: failure)
+            }
+        }
+    }
+
+    private func takeLiveLimits(_ report: LimitReport) {
+        lastLiveLimits = clock()
+        if limits.merge(report) { limitsNeedSaving = true }
+        publish()
+        scheduleSave()
+    }
+
+    /// Falls back to a one-word Claude Code run (see ClaudeLimitsProbe) when the endpoint cannot
+    /// answer: right away if the saved login has expired, otherwise once the last good reading is
+    /// half an hour old. Never more than once an hour.
+    private func probeIfStale(after failure: ClaudeLiveLimits.Failure) {
+        let now = clock()
+        guard !probeRunning, now.timeIntervalSince(lastProbe) > 3600 else { return }
+        let needed = failure == .loginExpired || failure == .noSavedLogin || now.timeIntervalSince(lastLiveLimits) > 1800
+        guard needed else { return }
+        probeRunning = true
+        lastProbe = now
+        ClaudeLimitsProbe.run { [weak self] report in
+            guard let self else { return }
+            self.probeRunning = false
+            if let report {
+                Log.info("Claude limits read from a short Claude Code run.", "usage")
+                self.takeLiveLimits(report)
+            } else {
+                Log.info("Claude limits: the fallback Claude Code run gave no limits.", "usage")
             }
         }
     }
